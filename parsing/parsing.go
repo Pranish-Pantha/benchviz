@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Parses a benchmark output from the go test -bench command
 func ParseBenchmark(name, rawBenchmark string) benchmark.Benchmark {
 	split := strings.Split(rawBenchmark, "\n")
 	goOS := strings.Split(split[0], " ")[1]
@@ -32,6 +33,7 @@ func ParseBenchmark(name, rawBenchmark string) benchmark.Benchmark {
 	return benchmark
 }
 
+// Parses a single line of a benchmark output representing a single test case
 func ParseTestCase(line []string) (benchmark.BenchMarkTestCase, error) {
 	if len(line) < 7 {
 		return benchmark.BenchMarkTestCase{}, fmt.Errorf("line is too short")
@@ -44,18 +46,8 @@ func ParseTestCase(line []string) (benchmark.BenchMarkTestCase, error) {
 	if err != nil {
 		return benchmark.BenchMarkTestCase{}, err
 	}
-	// bytesPerOp, err := strconv.ParseInt(line[4], 10, 0)
-	// if err != nil {
-	// 	return benchmark.BenchMarkTestCase{}, err
-	// }
-	// allocsPerOp, err := strconv.ParseInt(line[6], 10, 0)
-	// if err != nil {
-	// 	return benchmark.BenchMarkTestCase{}, err
-	// }
 	return benchmark.BenchMarkTestCase{
 		Iterations:       int(iterations),
 		NanosecondsPerOp: int(nanosecondsPerOp),
-		// BytesPerOp:       int(bytesPerOp),
-		// AllocsPerOp:      int(allocsPerOp),
 	}, nil
 }

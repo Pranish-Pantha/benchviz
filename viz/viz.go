@@ -36,6 +36,7 @@ type BarChart struct {
 	series   []BarSeries
 }
 
+// NewLineChart creates a new line chart with the given title, subtitle, x-axis labels, and series
 func NewLineChart(title, subtitle string, xAxis []string, series []LineSeries) *LineChart {
 	return &LineChart{
 		title:    title,
@@ -45,6 +46,7 @@ func NewLineChart(title, subtitle string, xAxis []string, series []LineSeries) *
 	}
 }
 
+// NewBarChart creates a new bar chart with the given title, subtitle, x-axis labels, and series
 func NewBarChart(title, subtitle string, xAxis []string, series []BarSeries) *BarChart {
 	return &BarChart{
 		title:    title,
@@ -54,6 +56,7 @@ func NewBarChart(title, subtitle string, xAxis []string, series []BarSeries) *Ba
 	}
 }
 
+// NewLineSeries creates a new line series with the given name and items
 func NewLineSeries(name string, items []opts.LineData) LineSeries {
 	return LineSeries{
 		name:  name,
@@ -61,6 +64,7 @@ func NewLineSeries(name string, items []opts.LineData) LineSeries {
 	}
 }
 
+// NewBarSeries creates a new bar series with the given name and items
 func NewBarSeries(name string, items []opts.BarData) BarSeries {
 	return BarSeries{
 		name:  name,
@@ -68,6 +72,7 @@ func NewBarSeries(name string, items []opts.BarData) BarSeries {
 	}
 }
 
+// Render renders the line chart to the given file
 func (lc *LineChart) Render(file string) {
 	line := charts.NewLine()
 	line.SetGlobalOptions(
@@ -91,6 +96,7 @@ func (lc *LineChart) Render(file string) {
 	line.Render(f)
 }
 
+// Render renders the bar chart to the given file
 func (bc *BarChart) Render(file string) {
 	bar := charts.NewBar()
 	bar.SetGlobalOptions(
@@ -114,6 +120,7 @@ func (bc *BarChart) Render(file string) {
 	bar.Render(f)
 }
 
+// BenchmarkToLineSeries converts a benchmark to a line series
 func BenchmarkToLineSeries(bench benchmark.Benchmark) LineSeries {
 	items := make([]opts.LineData, 0)
 	for _, testCase := range bench.Tests {
@@ -122,6 +129,7 @@ func BenchmarkToLineSeries(bench benchmark.Benchmark) LineSeries {
 	return NewLineSeries(bench.Name, items)
 }
 
+// BenchmarkToBarSeries converts a benchmark to a bar series
 func BenchmarkToBarSeries(bench benchmark.Benchmark) BarSeries {
 	items := make([]opts.BarData, 0)
 	for _, testCase := range bench.Tests {

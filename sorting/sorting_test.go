@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+// Template for a sorting benchmark
 func RunIntSortBenchmark(b *testing.B, sortFunc func([]int) []int) {
 	for _, v := range TestCases {
 		b.Run(fmt.Sprintf("input_size_%d", v.Size), func(b *testing.B) {
@@ -42,6 +43,7 @@ func BenchmarkIntHeapSort(b *testing.B) {
 	RunIntSortBenchmark(b, HeapSort)
 }
 
+// Template for a sorting test
 func ValidateIntSortFunc(t *testing.T, sortFunc func([]int) []int, name string) {
 	for _, v := range TestCases {
 		t.Run(fmt.Sprintf("input_size_%d", v.Size), func(t *testing.T) {

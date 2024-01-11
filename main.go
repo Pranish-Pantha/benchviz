@@ -8,6 +8,7 @@ import (
 	"os/exec"
 )
 
+// Executes a benchmark under the sorting package and returns a Benchmark object
 func ExecBenchmark(benchmarkName, testName string) benchmark.Benchmark {
 	out, err := exec.Command("go", "test", "benchviz/sorting", "-bench", testName, "-benchmem").Output()
 	if err != nil {
@@ -16,7 +17,8 @@ func ExecBenchmark(benchmarkName, testName string) benchmark.Benchmark {
 	return sorting.ParseBenchmark(benchmarkName, string(out))
 }
 
-func RenderSortAlgoLineChart() {
+// EXAMPLE: Renders a line chart comparing the performance of sorting algorithms
+func renderSortAlgoLineChart() {
 	xAxis := make([]string, len(sorting.TestCases))
 	for i, testCase := range sorting.TestCases {
 		xAxis[i] = fmt.Sprintf("%d", testCase.Size)
@@ -43,7 +45,8 @@ func RenderSortAlgoLineChart() {
 
 }
 
-func RenderSortAlgoBarChart() {
+// EXAMPLE: Renders a bar chart comparing the performance of sorting algorithms
+func renderSortAlgoBarChart() {
 	xAxis := make([]string, len(sorting.TestCases))
 	for i, testCase := range sorting.TestCases {
 		xAxis[i] = fmt.Sprintf("%d", testCase.Size)
@@ -70,6 +73,6 @@ func RenderSortAlgoBarChart() {
 }
 
 func main() {
-	RenderSortAlgoLineChart()
-	RenderSortAlgoBarChart()
+	renderSortAlgoLineChart()
+	renderSortAlgoBarChart()
 }
