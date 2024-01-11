@@ -1,10 +1,11 @@
 package sorting
 
 import (
-	"benchviz/benchmark"
-	"benchviz/parsing"
 	"cmp"
 	"math/rand"
+
+	"github.com/Pranish-Pantha/benchviz/benchmark"
+	"github.com/Pranish-Pantha/benchviz/parsing"
 )
 
 // Defines the test cases for sorting algorithms, i.e. the input sizes to test

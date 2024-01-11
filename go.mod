@@ -1,4 +1,4 @@
-module benchviz
+module github.com/Pranish-Pantha/benchviz
 
 go 1.21.5
 

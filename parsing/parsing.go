@@ -1,10 +1,11 @@
 package parsing
 
 import (
-	"benchviz/benchmark"
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/Pranish-Pantha/benchviz/benchmark"
 )
 
 // Parses a benchmark output from the go test -bench command

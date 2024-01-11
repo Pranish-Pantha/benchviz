@@ -1,8 +1,9 @@
 package viz
 
 import (
-	"benchviz/benchmark"
 	"os"
+
+	"github.com/Pranish-Pantha/benchviz/benchmark"
 
 	"github.com/go-echarts/go-echarts/v2/charts"
 	"github.com/go-echarts/go-echarts/v2/opts"

@@ -1,11 +1,12 @@
 package main
 
 import (
-	"benchviz/benchmark"
-	"benchviz/sorting"
-	"benchviz/viz"
 	"fmt"
 	"os/exec"
+
+	"github.com/Pranish-Pantha/benchviz/benchmark"
+	"github.com/Pranish-Pantha/benchviz/sorting"
+	"github.com/Pranish-Pantha/benchviz/viz"
 )
 
 // Executes a benchmark under the sorting package and returns a Benchmark object
